@@ -31,6 +31,10 @@ Minimized windows have dark background.
 
 Keyboard shortcuts text in Help dialog window is readble. 
 
+### XFCE4 Screenshooter
+
+Mapped nice XFCE4 screenshot taking application to standard set of Print Scr key combinations.
+
 ### Better Launcher
 
 Use of "rofi" as launcher, because it is easy to see and to read.  Default launcher steals focus and its focus can be easily missed.
@@ -47,10 +51,12 @@ Monitor brightness control keys are mapped.
 
 ## External Dependencies
 
+References are to Arch Linux packages.  Use "Upstream URL" on corresponding package pages to identify actual application dependency for your Linux distribution.
+
 1. [alacritty](https://archlinux.org/packages/community/x86_64/alacritty/)
 2. [vim](https://archlinux.org/packages/extra/x86_64/vim/)
 3. [rofi](https://archlinux.org/packages/community/x86_64/rofi/)
 4. [xfce4-screenshooter](https://archlinux.org/packages/extra/x86_64/xfce4-screenshooter/)
 5. [pactl](https://archlinux.org/packages/extra/x86_64/libpulse/) to raise and reduce volume
 6. [amixer](https://archlinux.org/packages/extra/x86_64/alsa-utils/) to mute (needs to be removed)
-7. [xbacklight](sudo pacman -S xorg-xbacklight)
+7. [xbacklight](https://archlinux.org/packages/extra/x86_64/xorg-xbacklight/)

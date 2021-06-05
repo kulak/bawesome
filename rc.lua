@@ -365,13 +365,13 @@ globalkeys = gears.table.join(
 
    -- Volume Keys, use xev program to read key codes
    awful.key({}, "#122", "XF86AudioLowerVolume", function ()
-    awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -300", false) -- "amixer -q -D pulse set Master 5%-"
+    awful.util.spawn("pactl set-sink-volume 0 -5", false) -- "amixer -q -D pulse set Master 5%-"
   end),
   awful.key({}, "#123", "XF86AudioRaiseVolume", function ()
-    awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ +300", false)
+    awful.util.spawn("pactl set-sink-volume 0 5", false)
   end),
   awful.key({}, "#121", "XF86AudioMute", function ()
-    awful.util.spawn("amixer -D pulse set Master 1+ toggle", false)
+    awful.util.spawn("pactl set-sink-mute 0 toggle", false)
   end),
 
     -- Brightness

@@ -47,8 +47,10 @@ Monitor brightness control keys are mapped.
 
 ## External Dependencies
 
-1. [rofi](https://archlinux.org/packages/community/x86_64/rofi/)
-2. [xfce4-screenshooter](https://archlinux.org/packages/extra/x86_64/xfce4-screenshooter/)
-3. [pactl](https://archlinux.org/packages/extra/x86_64/libpulse/) to raise and reduce volume
-4. [amixer](https://archlinux.org/packages/extra/x86_64/alsa-utils/) to mute (needs to be removed)
-5. [laptop monitor brightness](sudo pacman -S xorg-xbacklight)
+1. [alacritty](https://archlinux.org/packages/community/x86_64/alacritty/)
+2. [vim](https://archlinux.org/packages/extra/x86_64/vim/)
+3. [rofi](https://archlinux.org/packages/community/x86_64/rofi/)
+4. [xfce4-screenshooter](https://archlinux.org/packages/extra/x86_64/xfce4-screenshooter/)
+5. [pactl](https://archlinux.org/packages/extra/x86_64/libpulse/) to raise and reduce volume
+6. [amixer](https://archlinux.org/packages/extra/x86_64/alsa-utils/) to mute (needs to be removed)
+7. [xbacklight](sudo pacman -S xorg-xbacklight)

@@ -30,6 +30,8 @@ xdg_menu = prequire("archmenu")
 -- load local screenshot support
 local screenshot = require("screenshot")
 
+local battery_widget = require('awesome-battery_widget/init')
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -210,6 +212,19 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = tasklist_buttons
     }
 
+    -- Create the battery widget:
+    local my_battery_widget = battery_widget {
+        screen = s,
+        use_display_device = true,
+        create_callback = function(widget, device) widget.text = string.format('%3d', device.percentage) .. '%' end,
+        widget_template = wibox.widget.textbox
+    }    
+    -- When UPower updates the battery status, the widget is notified
+    -- and calls a signal you need to connect to:
+    my_battery_widget:connect_signal('upower::update', function (widget, device)
+        widget.text = string.format('%3d', device.percentage) .. '%'
+    end)
+
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
@@ -228,6 +243,7 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
+            my_battery_widget,
             s.mylayoutbox,
         },
     }

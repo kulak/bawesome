@@ -1,0 +1,3 @@
+[submodule "awesome-battery_widget"]
+	path = awesome-battery_widget
+	url = https://github.com/Aire-One/awesome-battery_widget.git

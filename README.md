@@ -49,6 +49,10 @@ Volume UP and Down keyboard keys are mapped to applications that raise and reduc
 
 Monitor brightness control keys are mapped.
 
+### Battery Power Widget
+
+Requires loading GIT submodule.
+
 ## External Dependencies
 
 References are to Arch Linux packages.  Use "Upstream URL" on corresponding package pages to identify actual application dependency for your Linux distribution.

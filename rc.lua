@@ -25,36 +25,37 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
--- load xdg_menu generated menu items, if 'xdg_menu.lua' exists
-local xdg_menu = optional_require("xdg_menu")
+local my_overrides = optional_require("overrides/my")
 
 -- load local screenshot support
-local screenshot = require("screenshot")
+local screenshot = require("b/screenshot")
 
-require('error_handling')
+require('b/error_handling')
 
-local taskbar = require('taskbar')
-local wibar = require('wibar')
-local key_bindings = require('key_bindings')
-local rules = require('rules')
-local signals = require('signals')
+local taskbar = require('b/taskbar')
+local wibar = require('b/wibar')
+local key_bindings = require('b/key_bindings')
+local rules = require('b/rules')
+local signals = require('b/signals')
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init(gears.filesystem. get_configuration_dir() .. "default/theme.lua")
 
--- This is used later as the default terminal and editor to run.
-local terminal = "alacritty"
+-- defaults
 local editor = os.getenv("EDITOR") or "vim"
-local editor_cmd = terminal .. " -e " .. editor
-
+local my = {}
+my.terminal = "alacritty"
+my.editor_cmd = my.terminal .. " -e " .. editor
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-local modkey = "Mod4"
+my.modkey = "Mod4"
+-- load xdg_menu generated menu items, if 'xdg_menu.lua' exists
+my.xdg_menu = optional_require("overrides/xdg_menu")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -77,8 +78,12 @@ awful.layout.layouts = {
 }
 -- }}}
 
-taskbar.init(menubar, hotkeys_popup, beautiful, terminal, editor_cmd, xdg_menu)
-wibar.init(taskbar, beautiful, modkey)
+if my_overrides then
+    my_overrides.init(my)
+end
+
+taskbar.init(menubar, hotkeys_popup, beautiful, my)
+wibar.init(taskbar, beautiful, my)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
@@ -88,7 +93,7 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
-key_bindings.init(modkey, terminal, hotkeys_popup, taskbar)
+key_bindings.init(my, hotkeys_popup, taskbar)
 
 rules.init(beautiful, key_bindings)
 

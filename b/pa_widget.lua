@@ -1,14 +1,22 @@
 local awful = require("awful")
 local naughty = require("naughty")
 
-local pa_widget = {}
+local pa_widget = {
+    pa_volume_delta = "350"
+}
+
+function pa_widget.init(my)
+    if my.pa_volume_delta then
+        pa_widget.pa_volume_delta = my.pa_volume_delta
+    end
+end
 
 function pa_widget.up()
-    with_current_sink("pactl set-sink-volume %s +350")
+    with_current_sink("pactl set-sink-volume %s +" .. pa_widget.pa_volume_delta)
 end
 
 function pa_widget.down()
-    with_current_sink("pactl set-sink-volume %s -350")
+    with_current_sink("pactl set-sink-volume %s -" .. pa_widget.pa_volume_delta)
 end
 
 function pa_widget.mute_toggle()

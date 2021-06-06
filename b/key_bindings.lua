@@ -1,11 +1,14 @@
 local gears = require("gears")
 local awful = require("awful")
-local pa_widget = require("pa_widget")
+local pa_widget = require("b/pa_widget")
 
 local key_bindings = {}
 
-function key_bindings.init(modkey, terminal, hotkeys_popup, taskbar)
+function key_bindings.init(my, hotkeys_popup, taskbar)
     -- {{{ Key bindings
+    local runPrompt = function () awful.spawn('/usr/bin/rofi -show run -font "System San Francisco Display 14"') end
+    local modkey = my.modkey
+    pa_widget.init(my)
     key_bindings.globalkeys = gears.table.join(
         awful.key({ modkey,           }, "s",      hotkeys_popup.show_help, {description="show help", group="awesome"}),
         awful.key({ modkey,           }, "Left",   awful.tag.viewprev, {description = "view previous", group = "tag"}),
@@ -39,7 +42,7 @@ function key_bindings.init(modkey, terminal, hotkeys_popup, taskbar)
             end, {description = "go back", group = "client"}),
 
         -- Standard program
-        awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end, {description = "open a terminal", group = "launcher"}),
+        awful.key({ modkey,           }, "Return", function () awful.spawn(my.terminal) end, {description = "open a terminal", group = "launcher"}),
         awful.key({ modkey, "Control" }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
         awful.key({ modkey, "Shift"   }, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
 
@@ -64,7 +67,8 @@ function key_bindings.init(modkey, terminal, hotkeys_popup, taskbar)
                 end, {description = "restore minimized", group = "client"}),
 
         -- Prompt
-        awful.key({ modkey },            "r",     function () awful.spawn('/usr/bin/rofi -show run -font "System San Francisco Display 14"') end, {description = "run prompt", group = "launcher"}),
+        awful.key({ modkey            }, "r",      runPrompt, {description = "run prompt", group = "launcher"}),
+        awful.key({ modkey, "Shift"   }, "Return", runPrompt, {description = "run prompt", group = "launcher"}),
 
         -- Window Switcher
         awful.key({ "Mod1" },          "Tab",     function () awful.spawn('/usr/bin/rofi -show window -font "System San Francisco Display 14"') end, {description = "switch window", group = "launcher"}),    

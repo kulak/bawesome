@@ -7,9 +7,9 @@ local battery_widget = require('awesome-battery_widget/init')
 
 local wibar = {}
 
-function wibar.init(taskbar, beautiful, modkey)
+function wibar.init(taskbar, beautiful, my)
     -- {{{ Wibar
-
+    local modkey = my.modkey
     -- Keyboard map indicator and switcher
     local mykeyboardlayout = awful.widget.keyboardlayout()
 

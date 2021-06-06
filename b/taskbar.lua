@@ -2,20 +2,20 @@ local awful = require("awful")
 
 local taskbar = {}
 
-function taskbar.init(menubar, hotkeys_popup, beautiful, terminal, editor_cmd, xdg_menu)
+function taskbar.init(menubar, hotkeys_popup, beautiful, my)
     -- {{{ Menu
     -- Create a launcher widget and a main menu
     taskbar.myawesomemenu = {
         { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-        { "manual", terminal .. " -e man awesome" },
-        { "edit config", editor_cmd .. " " .. awesome.conffile },
+        { "manual", my.terminal .. " -e man awesome" },
+        { "edit config", my.editor_cmd .. " " .. awesome.conffile },
         { "retaskbar", awesome.retaskbar },
         { "quit", function() awesome.quit() end },
     }
     
     taskbar.mymainmenu = awful.menu({ items = { { "awesome", taskbar.myawesomemenu, beautiful.awesome_icon },
-                                        { "Applications", xdg_menu },
-                                        { "open terminal", terminal }
+                                        { "Applications", my.xdg_menu },
+                                        { "open terminal", my.terminal }
                                     }
                             })
     
@@ -23,7 +23,7 @@ function taskbar.init(menubar, hotkeys_popup, beautiful, terminal, editor_cmd, x
                                         menu = taskbar.mymainmenu })
     
     -- Menubar configuration
-    menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+    menubar.utils.terminal = my.terminal -- Set the terminal for applications that require it
     -- }}}
  end
  

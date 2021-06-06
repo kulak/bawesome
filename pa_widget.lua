@@ -15,6 +15,10 @@ function pa_widget.mute_toggle()
     with_current_sink("pactl set-sink-mute %s toggle")
 end
 
+function pa_widget.pavucontrol()
+    awful.spawn("pavucontrol")
+end
+
 function with_current_sink(cmd)
     awful.spawn.easy_async_with_shell("pactl list short sinks | grep RUNNING | cut -f1", function(cmdout, cmderr)
         -- strip new line character from cmdout

@@ -366,9 +366,10 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
 
     -- sound down, up and mute
-    awful.key({ }, "#122", pa_widget.down),
-    awful.key({ }, "#123", pa_widget.up),
-    awful.key({ }, "#121", pa_widget.mute_toggle),
+    awful.key({},         "XF86AudioLowerVolume", pa_widget.down,        {description = "Lower", group = "Sound"}),
+    awful.key({},         "XF86AudioRaiseVolume", pa_widget.up,          {description = "Raise", group = "Sound"}),
+    awful.key({},         "XF86AudioMute",        pa_widget.mute_toggle, {description = "Mute", group = "Sound"}),
+    awful.key({ modkey }, "XF86AudioMute",        pa_widget.pavucontrol, {description = "Pulse Audio Controls", group = "Sound"}),
 
     -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("xbacklight -dec 5") end),

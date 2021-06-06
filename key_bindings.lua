@@ -1,6 +1,5 @@
 local gears = require("gears")
 local awful = require("awful")
-local hotkeys_popup = require("awful.hotkeys_popup")
 local pa_widget = require("pa_widget")
 
 local key_bindings = {}

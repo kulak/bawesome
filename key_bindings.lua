@@ -4,7 +4,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local pa_widget = require("pa_widget")
 
 -- {{{ Key bindings
-globalkeys = gears.table.join(
+local globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -125,7 +125,7 @@ globalkeys = gears.table.join(
     awful.key({ "Ctrl"  }, "Print", scrot_delay,     {description = "Take a screenshot of delay", group = "screenshot"})
 )
 
-clientkeys = gears.table.join(
+local clientkeys = gears.table.join(
     awful.key({ modkey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen

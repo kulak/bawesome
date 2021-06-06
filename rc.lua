@@ -1,6 +1,7 @@
 -- Entry Point
 
-local function prequire(m) 
+-- returns module or nil
+local function optional_require(m) 
     local ok, err = pcall(require, m) 
     if not ok then return nil, err end
     return err
@@ -24,8 +25,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
--- load xdg_menu generated menu items
-local xdg_menu = prequire("archmenu")
+-- load xdg_menu generated menu items, if 'archmenu.lua' exists
+optional_require("archmenu")
 
 -- load local screenshot support
 local screenshot = require("screenshot")

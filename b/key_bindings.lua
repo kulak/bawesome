@@ -3,15 +3,15 @@ local awful = require("awful")
 local pa_widget = require("b/pa_widget")
 local screenshot = require("b/screenshot")
 
-local key_bindings = {}
+local module = {}
 
-function key_bindings.init(my, hotkeys_popup, taskbar)
+function module.init(my, hotkeys_popup, taskbar)
     -- {{{ Key bindings
     local runPrompt = function () awful.spawn('/usr/bin/rofi -show run -font "System San Francisco Display 14"') end
     local modkey = my.modkey
     pa_widget.init(my)
     screenshot.init(my)
-    key_bindings.globalkeys = gears.table.join(
+    module.globalkeys = gears.table.join(
         awful.key({ modkey,           }, "s",      hotkeys_popup.show_help, {description="show help", group="awesome"}),
         awful.key({ modkey,           }, "Left",   awful.tag.viewprev, {description = "view previous", group = "tag"}),
         awful.key({ modkey,           }, "Right",  awful.tag.viewnext, {description = "view next", group = "tag"}),
@@ -104,7 +104,7 @@ function key_bindings.init(my, hotkeys_popup, taskbar)
         awful.key({ "Ctrl"  }, "Print", screenshot.screen_delay,     {description = "Screenshot of screen after delay", group = "screenshot"})
     )
 
-    key_bindings.clientkeys = gears.table.join(
+    module.clientkeys = gears.table.join(
         awful.key({ modkey,           }, "f",
             function (c)
                 c.fullscreen = not c.fullscreen
@@ -145,7 +145,7 @@ function key_bindings.init(my, hotkeys_popup, taskbar)
     -- Be careful: we use keycodes to make it work on any keyboard layout.
     -- This should map on the top row of your keyboard, usually 1 to 9.
     for i = 1, 9 do
-        globalkeys = gears.table.join(globalkeys,
+        module.globalkeys = gears.table.join(module.globalkeys,
             -- View tag only.
             awful.key({ modkey }, "#" .. i + 9,
                     function ()
@@ -187,7 +187,7 @@ function key_bindings.init(my, hotkeys_popup, taskbar)
         )
     end
 
-    key_bindings.clientbuttons = gears.table.join(
+    module.clientbuttons = gears.table.join(
         awful.button({ }, 1, function (c)
             c:emit_signal("request::activate", "mouse_click", {raise = true})
         end),
@@ -202,8 +202,8 @@ function key_bindings.init(my, hotkeys_popup, taskbar)
     )
 
     -- Set keys
-    root.keys(key_bindings.globalkeys)
+    root.keys(module.globalkeys)
     -- }}}
 end
 
-return key_bindings
+return module

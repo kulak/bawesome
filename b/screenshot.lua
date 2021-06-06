@@ -3,7 +3,6 @@ local naughty = require("naughty")
 
 local module = {
     delay_secs = 5,
-    save_dir = "/tmp"
 }
 function module.init(my)
     module.delay_secs = my.screenshot_delay_secs

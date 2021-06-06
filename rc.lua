@@ -53,6 +53,7 @@ my.editor_cmd = my.terminal .. " -e " .. editor
 my.modkey = "Mod4"
 -- load xdg_menu generated menu items, if 'xdg_menu.lua' exists
 my.xdg_menu = optional_require("overrides/xdg_menu")
+my.screenshot_delay_secs = 5
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -95,3 +96,5 @@ key_bindings.init(my, hotkeys_popup, taskbar)
 rules.init(beautiful, key_bindings)
 
 signals.init(beautiful)
+
+awful.spawn.single_instance("xfce4-clipman", {})

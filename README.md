@@ -24,6 +24,7 @@ git submodule update
 
 - [on screen help](doc/images/on-screen-help.png)
 - [run application](doc/images/rofi.png)
+- [clipboard manager](doc/images/clipboard-manager.png)
 - [active window](doc/images/active-window.png)
 
 ## Features

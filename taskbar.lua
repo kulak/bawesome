@@ -2,7 +2,7 @@ local awful = require("awful")
 
 local taskbar = {}
 
-function taskbar.init(menubar, hotkeys_popup, beautiful, terminal, editor_cmd)
+function taskbar.init(menubar, hotkeys_popup, beautiful, terminal, editor_cmd, xdg_menu)
     -- {{{ Menu
     -- Create a launcher widget and a main menu
     taskbar.myawesomemenu = {
@@ -14,7 +14,7 @@ function taskbar.init(menubar, hotkeys_popup, beautiful, terminal, editor_cmd)
     }
     
     taskbar.mymainmenu = awful.menu({ items = { { "awesome", taskbar.myawesomemenu, beautiful.awesome_icon },
-                                        { "Applications", xdgmenu },
+                                        { "Applications", xdg_menu },
                                         { "open terminal", terminal }
                                     }
                             })

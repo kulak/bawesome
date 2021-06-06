@@ -26,7 +26,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 -- load xdg_menu generated menu items, if 'archmenu.lua' exists
-optional_require("archmenu")
+local xdg_menu = optional_require("xdg_menu")
 
 -- load local screenshot support
 local screenshot = require("screenshot")
@@ -77,7 +77,7 @@ awful.layout.layouts = {
 }
 -- }}}
 
-taskbar.init(menubar, hotkeys_popup, beautiful, terminal, editor_cmd)
+taskbar.init(menubar, hotkeys_popup, beautiful, terminal, editor_cmd, xdg_menu)
 wibar.init(taskbar, beautiful, modkey)
 
 -- {{{ Mouse bindings

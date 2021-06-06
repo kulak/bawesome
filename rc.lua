@@ -52,7 +52,8 @@ my.editor_cmd = my.terminal .. " -e " .. editor
 -- However, you can use another modifier like Mod1, but it may interact with others.
 my.modkey = "Mod4"
 -- load xdg_menu generated menu items, if 'xdg_menu.lua' exists
-my.xdg_menu = optional_require("overrides/xdg_menu")
+optional_require("overrides/xdg_menu")
+my.xdg_menu = xdgmenu -- from overrides/xdg_menu
 my.screenshot_delay_secs = 5
 
 -- Table of layouts to cover with awful.layout.inc, order matters.

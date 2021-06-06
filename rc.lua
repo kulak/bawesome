@@ -1,3 +1,5 @@
+-- Entry Point
+
 local function prequire(m) 
     local ok, err = pcall(require, m) 
     if not ok then return nil, err end

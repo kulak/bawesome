@@ -15,6 +15,9 @@ Clone into `$XDG_CONFIG_HOME` directory or `$HOME/.config`:
 ```
 cd $HOME/.config
 git clone https://github.com/Kulak/bawesome.git awesome
+cd awesome
+git submodule init
+git submodule update
 ```
 
 ## Features

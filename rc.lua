@@ -25,7 +25,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
--- load xdg_menu generated menu items, if 'archmenu.lua' exists
+-- load xdg_menu generated menu items, if 'xdg_menu.lua' exists
 local xdg_menu = optional_require("xdg_menu")
 
 -- load local screenshot support

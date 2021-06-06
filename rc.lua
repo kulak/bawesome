@@ -234,7 +234,7 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
-require('key_bindings')
+local key_bindings = require('key_bindings')
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
@@ -245,8 +245,8 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
+                     keys = key_bindings.clientkeys,
+                     buttons = key_bindings.clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }

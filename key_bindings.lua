@@ -222,7 +222,7 @@ for i = 1, 9 do
     )
 end
 
-clientbuttons = gears.table.join(
+local clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
     end),
@@ -239,3 +239,9 @@ clientbuttons = gears.table.join(
 -- Set keys
 root.keys(globalkeys)
 -- }}}
+
+return {
+    globalkeys = globalkeys,
+    clientkeys = clientkeys,
+    clientbuttons = clientbuttons,
+}

@@ -45,7 +45,7 @@ Use of "rofi" as launcher, because it is easy to see and to read.  Default launc
 
 ### Standard Extended Keys are Mapped
 
-Volume UP and Down keyboard keys are mapped to applications that raise and reduce the volume.
+Keyboard volume management keys (up, down and mute toggle) are properly mapped via `pactl`.
 
 Monitor brightness control keys are mapped.
 
@@ -62,5 +62,4 @@ References are to Arch Linux packages.  Use "Upstream URL" on corresponding pack
 3. [rofi](https://archlinux.org/packages/community/x86_64/rofi/)
 4. [xfce4-screenshooter](https://archlinux.org/packages/extra/x86_64/xfce4-screenshooter/)
 5. [pactl](https://archlinux.org/packages/extra/x86_64/libpulse/) to raise and reduce volume
-6. [amixer](https://archlinux.org/packages/extra/x86_64/alsa-utils/) to mute (needs to be removed)
-7. [xbacklight](https://archlinux.org/packages/extra/x86_64/xorg-xbacklight/)
+6. [xbacklight](https://archlinux.org/packages/extra/x86_64/xorg-xbacklight/)

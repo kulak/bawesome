@@ -32,6 +32,8 @@ local screenshot = require("screenshot")
 
 local battery_widget = require('awesome-battery_widget/init')
 
+local pa_widget = require("pa_widget")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -363,38 +365,20 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
-   -- Volume Keys, use xev program to read key codes
-   awful.key({}, "#122", "XF86AudioLowerVolume", function ()
-    awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -300", false) -- "amixer -q -D pulse set Master 5%-"
-  end),
-  awful.key({}, "#123", "XF86AudioRaiseVolume", function ()
-    awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ +300", false)
-  end),
-  awful.key({}, "#121", "XF86AudioMute", function ()
-    awful.util.spawn("amixer -D pulse set Master 1+ toggle", false)
-  end),
+    -- sound down, up and mute
+    awful.key({ }, "#122", pa_widget.down),
+    awful.key({ }, "#123", pa_widget.up),
+    awful.key({ }, "#121", pa_widget.mute_toggle),
 
     -- Brightness
-    awful.key({ }, "XF86MonBrightnessDown", function ()
-        awful.util.spawn("xbacklight -dec 5") end),
-    awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.util.spawn("xbacklight -inc 5") end),
+    awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("xbacklight -dec 5") end),
+    awful.key({ }, "XF86MonBrightnessUp", function () awful.util.spawn("xbacklight -inc 5") end),
 
-  -- configure screenshots
-  awful.key({ }, "Print", scrot_full,
-  {description = "Take a screenshot of entire screen", group = "screenshot"}),
-awful.key({ "Shift" }, "Print", scrot_selection,
-  {description = "Take a screenshot of selection", group = "screenshot"}),
-awful.key({ modkey, }, "Print", scrot_window,
-  {description = "Take a screenshot of focused window", group = "screenshot"}),
-awful.key({ "Ctrl" }, "Print", scrot_delay,
-  {description = "Take a screenshot of delay", group = "screenshot"})
-
-  -- map language change to F12 key (key code 96)
-  -- awful.key({}, "#121", "XF86AudioMute", function ()
-    -- awful.util.spawn("amixer -D pulse set Master 1+ toggle", false)
-  -- end)
-
+    -- configure screenshots
+    awful.key({         }, "Print", scrot_full,      {description = "Take a screenshot of entire screen", group = "screenshot"}),
+    awful.key({ "Shift" }, "Print", scrot_selection, {description = "Take a screenshot of selection", group = "screenshot"}),
+    awful.key({ modkey, }, "Print", scrot_window,    {description = "Take a screenshot of focused window", group = "screenshot"}),
+    awful.key({ "Ctrl"  }, "Print", scrot_delay,     {description = "Take a screenshot of delay", group = "screenshot"})
 )
 
 clientkeys = gears.table.join(

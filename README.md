@@ -63,6 +63,22 @@ Monitor brightness control keys are mapped.
 
 Requires loading GIT submodule.
 
+## Overrides
+
+### Applications Menu
+
+To generate "classic" menu for your installed applicatinons:
+
+    xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/overrides/xdg_hmenu.lua
+
+### Machine Specific Configuration Paramters
+
+Create `overrides/my.lua` file.  Start with template:
+
+```sh
+cp overrides/templates/my.lua overrides/my.lua
+```
+
 ## External Dependencies
 
 References are to Arch Linux packages.  Use "Upstream URL" on corresponding package pages to identify actual application dependency for your Linux distribution.

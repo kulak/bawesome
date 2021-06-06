@@ -1,19 +1,31 @@
 local awful = require("awful")
 local naughty = require("naughty")
 
-function scrot_full()
-    exec("xfce4-screenshooter --fullscreen", "Took screen screenshot")
+local module = {
+    delay_secs = 5,
+    save_dir = "/tmp"
+}
+function module.init(my)
+    module.delay_secs = my.screenshot_delay_secs
 end
 
-function scrot_selection()
-    exec("xfce4-screenshooter --region", "Took selection screenshot")
+function module.screen()
+    module.exec("xfce4-screenshooter --fullscreen", "Took screen screenshot")
 end
 
-function scrot_window()
-    exec("xfce4-screenshooter --window", "Took window screenshot")
+function module.screen_delay(my)
+    module.exec("xfce4-screenshooter --fullscreen -d " .. module.delay_secs, "Took screen screenshot")
 end
 
-function exec(cmd, msg)
+function module.selection()
+    module.exec("xfce4-screenshooter --region", "Took selection screenshot")
+end
+
+function module.window()
+    module.exec("xfce4-screenshooter --window", "Took window screenshot")
+end
+
+function module.exec(cmd, msg)
     awful.spawn.easy_async_with_shell(cmd, function(cmdout, cmderr)
         -- uncomment to debug
         --     naughty.notify({
@@ -22,3 +34,5 @@ function exec(cmd, msg)
         --     })
     end)
 end
+
+return module

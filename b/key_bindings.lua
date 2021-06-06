@@ -1,6 +1,7 @@
 local gears = require("gears")
 local awful = require("awful")
 local pa_widget = require("b/pa_widget")
+local screenshot = require("b/screenshot")
 
 local key_bindings = {}
 
@@ -9,6 +10,7 @@ function key_bindings.init(my, hotkeys_popup, taskbar)
     local runPrompt = function () awful.spawn('/usr/bin/rofi -show run -font "System San Francisco Display 14"') end
     local modkey = my.modkey
     pa_widget.init(my)
+    screenshot.init(my)
     key_bindings.globalkeys = gears.table.join(
         awful.key({ modkey,           }, "s",      hotkeys_popup.show_help, {description="show help", group="awesome"}),
         awful.key({ modkey,           }, "Left",   awful.tag.viewprev, {description = "view previous", group = "tag"}),
@@ -96,10 +98,10 @@ function key_bindings.init(my, hotkeys_popup, taskbar)
         awful.key({ }, "XF86MonBrightnessUp", function () awful.util.spawn("xbacklight -inc 5") end),
 
         -- configure screenshots
-        awful.key({         }, "Print", scrot_full,      {description = "Take a screenshot of entire screen", group = "screenshot"}),
-        awful.key({ "Shift" }, "Print", scrot_selection, {description = "Take a screenshot of selection", group = "screenshot"}),
-        awful.key({ modkey, }, "Print", scrot_window,    {description = "Take a screenshot of focused window", group = "screenshot"}),
-        awful.key({ "Ctrl"  }, "Print", scrot_delay,     {description = "Take a screenshot of delay", group = "screenshot"})
+        awful.key({         }, "Print", screenshot.screen,      {description = "Screenshot of screen", group = "screenshot"}),
+        awful.key({ "Shift" }, "Print", screenshot.selection, {description = "Screenshot of selection", group = "screenshot"}),
+        awful.key({ modkey, }, "Print", screenshot.window,    {description = "Screenshot of window", group = "screenshot"}),
+        awful.key({ "Ctrl"  }, "Print", screenshot.screen_delay,     {description = "Screenshot of screen after delay", group = "screenshot"})
     )
 
     key_bindings.clientkeys = gears.table.join(

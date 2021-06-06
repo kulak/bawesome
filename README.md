@@ -20,6 +20,12 @@ git submodule init
 git submodule update
 ```
 
+## Screenshots
+
+- [on screen help](doc/images/on-screen-help.png)
+- [run application](doc/images/rofi.png)
+- [active window](doc/images/active-window.png)
+
 ## Features
 
 ### Blue Color Scheme

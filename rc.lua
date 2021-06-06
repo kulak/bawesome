@@ -27,9 +27,6 @@ require("awful.hotkeys_popup.keys")
 
 local my_overrides = optional_require("overrides/my")
 
--- load local screenshot support
-local screenshot = require("b/screenshot")
-
 require('b/error_handling')
 
 local taskbar = require('b/taskbar')

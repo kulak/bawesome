@@ -294,4 +294,5 @@ awful.rules.rules = {
 }
 -- }}}
 
-require('signals')
+local signals = require('signals')
+signals.init(beautiful)

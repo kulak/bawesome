@@ -10,11 +10,14 @@ To get application properties for rules:
 
     xprop WM_CLASS WM_NAME
 
-## To Debug
+## Easy Debug of External Calls
 
 ```lua
-naughty.notify({
-    text = msg .. cmdout .. cmderr,
-    timeout = 0, -- don't remove automatically
-})
-```
+function module.exec(cmd, msg)
+    awful.spawn.easy_async_with_shell(cmd, function(cmdout, cmderr)
+        naughty.notify({
+            text = msg .. cmdout .. cmderr,
+            timeout = 0,
+        })
+    end)
+end```

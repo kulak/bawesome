@@ -120,7 +120,11 @@ function wibar.init(taskbar, beautiful, my)
         end
 
         -- Create the wibox
-        s.mywibox = awful.wibar({ position = "top", screen = s })
+        s.mywibox = awful.wibar({ 
+            position = "top", 
+            screen = s,
+            height = 25, -- impacted by theme.font
+        })
 
         -- Add widgets to the wibox
         s.mywibox:setup {

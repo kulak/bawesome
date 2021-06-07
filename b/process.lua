@@ -11,7 +11,7 @@ function module.init(my) end
 -- Attention: This works only if there is single user session on the machine.
 function module.run_single(exeName, exeArgs)
     awful.spawn.easy_async(
-        -- pidof returns non-zero code if nprocess is not found
+        -- pidof returns non-zero code if process is not found
         'pidof ' .. exeName, function(cmdout, cmderr, exitreason, exitcode)
             if exitcode ~= 0 then
                 -- process does not exist, create it

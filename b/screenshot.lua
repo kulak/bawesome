@@ -9,29 +9,23 @@ function module.init(my)
 end
 
 function module.screen()
-    module.exec("xfce4-screenshooter --fullscreen", "Took screen screenshot")
+    module.exec("xfce4-screenshooter --fullscreen")
 end
 
 function module.screen_delay(my)
-    module.exec("xfce4-screenshooter --fullscreen -d " .. module.delay_secs, "Took screen screenshot")
+    module.exec("xfce4-screenshooter --fullscreen -d " .. module.delay_secs)
 end
 
 function module.selection()
-    module.exec("xfce4-screenshooter --region", "Took selection screenshot")
+    module.exec("xfce4-screenshooter --region")
 end
 
 function module.window()
-    module.exec("xfce4-screenshooter --window", "Took window screenshot")
+    module.exec("xfce4-screenshooter --window")
 end
 
-function module.exec(cmd, msg)
-    awful.spawn.easy_async_with_shell(cmd, function(cmdout, cmderr)
-        -- uncomment to debug
-        --     naughty.notify({
-        --         text = msg .. cmdout .. cmderr,
-        --         timeout = 0,
-        --     })
-    end)
+function module.exec(cmd)
+    awful.spawn.with_shell(cmd)
 end
 
 return module

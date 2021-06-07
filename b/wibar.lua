@@ -102,18 +102,22 @@ function wibar.init(taskbar, beautiful, my)
             buttons = tasklist_buttons
         }
 
-        -- Create the battery widget:
-        local my_battery_widget = battery_widget {
-            screen = s,
-            use_display_device = true,
-            create_callback = function(widget, device) widget.text = string.format('%3d', device.percentage) .. '%' end,
-            widget_template = wibox.widget.textbox
-        }    
-        -- When UPower updates the battery status, the widget is notified
-        -- and calls a signal you need to connect to:
-        my_battery_widget:connect_signal('upower::update', function (widget, device)
-            widget.text = string.format('%3d', device.percentage) .. '%'
-        end)
+        local my_battery_widget = nil
+        -- Check if battery exists
+        if #(battery_widget.list_devices()) > 0 then
+            -- Create the battery widget:
+            my_battery_widget = battery_widget {
+                screen = s,
+                use_display_device = true,
+                create_callback = function(widget, device) widget.text = string.format('%3d', device.percentage) .. '%' end,
+                widget_template = wibox.widget.textbox
+            }    
+            -- When UPower updates the battery status, the widget is notified
+            -- and calls a signal you need to connect to:
+            my_battery_widget:connect_signal('upower::update', function (widget, device)
+                widget.text = string.format('%3d', device.percentage) .. '%'
+            end)
+        end
 
         -- Create the wibox
         s.mywibox = awful.wibar({ position = "top", screen = s })

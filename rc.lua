@@ -1,9 +1,10 @@
 -- Entry Point
-
 -- returns module or nil
-local function optional_require(m) 
-    local ok, err = pcall(require, m) 
-    if not ok then return nil, err end
+local function optional_require(m)
+    local ok, err = pcall(require, m)
+    if not ok then
+        return nil, err
+    end
     return err
 end
 
@@ -25,6 +26,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local process = require('b/process')
 local my_overrides = optional_require("overrides/my")
 
 require('b/error_handling')
@@ -38,7 +40,7 @@ local signals = require('b/signals')
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init(gears.filesystem. get_configuration_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "default/theme.lua")
 
 -- defaults
 local editor = os.getenv("EDITOR") or "vim"
@@ -81,15 +83,19 @@ if my_overrides then
     my_overrides.init(my)
 end
 
+process.init(my)
 taskbar.init(menubar, hotkeys_popup, beautiful, my)
 wibar.init(taskbar, beautiful, my)
 
 -- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () taskbar.mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+root.buttons(
+    gears.table.join(
+        awful.button(
+            {}, 3, function() taskbar.mymainmenu:toggle() end
+        ), awful.button({}, 4, awful.tag.viewnext),
+        awful.button({}, 5, awful.tag.viewprev)
+    )
+)
 -- }}}
 
 key_bindings.init(my, hotkeys_popup, taskbar)
@@ -98,4 +104,4 @@ rules.init(beautiful, key_bindings)
 
 signals.init(beautiful)
 
-awful.spawn.single_instance("xfce4-clipman", {})
+process.run_single("xfce4-clipman", "")

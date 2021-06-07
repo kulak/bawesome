@@ -1,0 +1,18 @@
+# lua format for https://github.com/Koihik/LuaFormatter/blob/master/docs/Style-Config.md
+# use VSCode extension: https://marketplace.visualstudio.com/items?itemName=Koihik.vscode-lua-format
+
+keep_simple_control_block_one_line: false
+keep_simple_function_one_line: true
+
+break_after_functioncall_lp: true
+break_before_functioncall_rp: true
+align_args: true
+align_parameter: true
+chop_down_parameter: true
+
+# true to get one record per line
+chop_down_table: true
+
+extra_sep_at_table_end: true
+
+

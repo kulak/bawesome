@@ -89,3 +89,4 @@ References are to Arch Linux packages.  Use "Upstream URL" on corresponding pack
 4. [xfce4-screenshooter](https://archlinux.org/packages/extra/x86_64/xfce4-screenshooter/)
 5. [pactl](https://archlinux.org/packages/extra/x86_64/libpulse/) to raise and reduce volume
 6. [xbacklight](https://archlinux.org/packages/extra/x86_64/xorg-xbacklight/)
+7. [pidof](https://archlinux.org/packages/core/x86_64/procps-ng/)

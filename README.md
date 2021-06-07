@@ -69,7 +69,9 @@ Requires loading GIT submodule.
 
 To generate "classic" menu for your installed applicatinons:
 
-    xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/overrides/xdg_hmenu.lua
+    xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/overrides/xdg_menu.lua
+
+About [xdg_menu](https://wiki.archlinux.org/title/Xdg-menu) on ArchLinux.
 
 ### Machine Specific Configuration Paramters
 

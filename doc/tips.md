@@ -13,10 +13,14 @@ To get application properties for rules:
 ## Easy Debug of External Calls
 
 ```lua
+local naughty = require("naughty")
+
 function module.exec(cmd, msg)
     awful.spawn.easy_async_with_shell(cmd, function(cmdout, cmderr)
         naughty.notify({
-            text = msg .. cmdout .. cmderr,
+            preset = naughty.config.presets.critical,
+            title = "message title",
+            text = cmdout .. cmderr,
             timeout = 0,
         })
     end)

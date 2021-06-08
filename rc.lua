@@ -98,7 +98,7 @@ root.buttons(
 )
 -- }}}
 
-key_bindings.init(my, hotkeys_popup, taskbar)
+key_bindings.init(my, hotkeys_popup, taskbar, menubar)
 
 rules.init(beautiful, key_bindings)
 

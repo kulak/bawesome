@@ -85,10 +85,14 @@ cp overrides/templates/my.lua overrides/my.lua
 
 References are to Arch Linux packages.  Use "Upstream URL" on corresponding package pages to identify actual application dependency for your Linux distribution.
 
-1. [alacritty](https://archlinux.org/packages/community/x86_64/alacritty/)
-2. [vim](https://archlinux.org/packages/extra/x86_64/vim/)
-3. [rofi](https://archlinux.org/packages/community/x86_64/rofi/)
-4. [xfce4-screenshooter](https://archlinux.org/packages/extra/x86_64/xfce4-screenshooter/)
-5. [pactl](https://archlinux.org/packages/extra/x86_64/libpulse/) to raise and reduce volume
-6. [xbacklight](https://archlinux.org/packages/extra/x86_64/xorg-xbacklight/)
-7. [pidof](https://archlinux.org/packages/core/x86_64/procps-ng/)
+1. [alacritty](https://archlinux.org/packages/community/x86_64/alacritty/) default terminal emulator, overridable.
+2. [vim](https://archlinux.org/packages/extra/x86_64/vim/) required internally.
+3. [rofi](https://archlinux.org/packages/community/x86_64/rofi/) for effecient program and window management.
+3. XFCE4 Tools
+- [xfce4-screenshooter](https://archlinux.org/packages/extra/x86_64/xfce4-screenshooter/);
+- [xfce4-clipman](https://archlinux.org/packages/extra/x86_64/xfce4-clipman-plugin/) for screenshooter clipboard support.
+4. [pactl](https://archlinux.org/packages/extra/x86_64/libpulse/) to raise and reduce volume.
+5. [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/) pulse audio UI control.
+6. [xbacklight](https://archlinux.org/packages/extra/x86_64/xorg-xbacklight/) for laptop monitor brightness.
+7. [pgrep](https://archlinux.org/packages/core/x86_64/procps-ng/) to start programs once.
+8. [whoami](https://archlinux.org/packages/core/x86_64/coreutils/).

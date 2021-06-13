@@ -2,23 +2,45 @@ local awful = require("awful")
 
 local module = {}
 
-function module.init(my) end
+function module.init(my)
+end
 
 -- Attempts to run only one instance of the process.
--- Use 'pidof' to see if process ID can be found by name.
--- If PID does not exist, start supplied application.
--- If PID exists, do nothing.
--- Attention: This works only if there is single user session on the machine.
+-- 
+-- It searches for the process name belonging to the current user
+-- and starts new process with exeArgs if none was found.
+--
+-- The function should be safe for multi-user environment.
 function module.run_single(exeName, exeArgs)
-    awful.spawn.easy_async(
-        -- pidof returns non-zero code if process is not found
-        'pidof ' .. exeName, function(cmdout, cmderr, exitreason, exitcode)
+    module.with_user(function(user)
+        -- -c returns count of matching processes
+        -- -u $USER restricts search to the user
+        -- pgrep exits with 0 if found matches and 1 if not found.
+        awful.spawn.easy_async('pgrep -c -u ' .. user .. ' ' .. exeName, function(cmdout, cmderr, exitreason, exitcode)
             if exitcode ~= 0 then
-                -- process does not exist, create it
+                -- process was not found, create new process
                 awful.spawn(exeName .. ' ' .. exeArgs)
             end
+        end)
+    end)
+end
+
+-- loads current user name and calls a function delegate with that user
+function module.with_user(funcWithUser)
+    awful.spawn.easy_async("whoami", function(cmdout, cmderr, exitreason, exitcode)
+        if exitcode == 0 then
+            -- strip new line character from end of stream
+            local user = string.gsub(cmdout, "\n", "")
+            funcWithUser(user)
+        else
+            naughty.notify({
+                preset = naughty.config.presets.critical,
+                title = "whoami call failed",
+                text = cmderr,
+                timeout = 0
+            })
         end
-    )
+    end)
 end
 
 return module

@@ -5,7 +5,7 @@ local screenshot = require("b/screenshot")
 
 local module = {}
 
-function module.init(my, hotkeys_popup, taskbar)
+function module.init(my, hotkeys_popup, taskbar, menubar)
     -- {{{ Key bindings
     local runPrompt = function () awful.spawn('/usr/bin/rofi -show run -font "System San Francisco Display 14"') end
     local modkey = my.modkey

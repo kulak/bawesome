@@ -24,7 +24,8 @@ function module.exec(cmd, msg)
             timeout = 0,
         })
     end)
-end```
+end
+```
 
 ## References
 

@@ -101,6 +101,10 @@ cp overrides/templates/my.lua overrides/my.lua
 
 Included `randr` script from the main website and mapped it to `command-O` to turn on and off multiple monitors.
 
+### Other Notes
+
+See [notes](doc/notes.md).
+
 ## External Dependencies
 
 References are to Arch Linux packages.  Use "Upstream URL" on corresponding package pages to identify actual application dependency for your Linux distribution.

@@ -36,7 +36,7 @@ Features at a glance copared to default script:
 - active window highlight
 - readable help screen window
 - multiple monitor support
-- keyboard sound controls and keyboard shortcuts
+- keyboard shortcuts to manage sound volume mapped to keyboard "volume" management buttons
 - laptop keyboard highlight with keyboard shortcuts
 - automatic laptop power indicator visible only when battery is present
 - screenshooter with keyboard shortcuts

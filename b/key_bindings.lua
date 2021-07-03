@@ -2,6 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local pa_widget = require("b/pa_widget")
 local screenshot = require("b/screenshot")
+local xrandr = require('b/xrandr')
 
 local module = {}
 
@@ -47,6 +48,7 @@ function module.init(my, hotkeys_popup, taskbar, menubar)
         awful.key({ modkey,           }, "Return", function () awful.spawn(my.terminal) end, {description = "open a terminal", group = "launcher"}),
         awful.key({ modkey, "Control" }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
         awful.key({ modkey, "Shift"   }, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
+        awful.key({ modkey }, "o", function() xrandr.xrandr() end, {description = "Arrange monitors", group = "awesome"}),
 
         awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end, {description = "increase master width factor", group = "layout"}),
         awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end, {description = "decrease master width factor", group = "layout"}),

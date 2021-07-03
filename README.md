@@ -4,9 +4,9 @@
 
 This is just a specific `awesomewm` configuration that works well on ArchLinux.
 
-When DE tools can be used we opt for XFCE4 applications.  This configuration is developed on Arch Linux.
+This project is not an invention of how things shall be done, but a good maintained example of how to configure `awesomewm` for daily use.  It is a current solution to various daily desktop usage needs of the author and is shared here in the hope of helping others to start with `awesomewm`.  The author uses XFCE4 as a backup DE. XFCE tools are used when appropriate.  Screenshot tool is a good example.
 
-**Status:** it works, but could be fine tuned more.
+**Status:** it is in daily use.
 
 ## Installation
 
@@ -22,12 +22,28 @@ git submodule update
 
 ## Screenshots
 
-- [on screen help](doc/images/on-screen-help.png)
-- [run application](doc/images/rofi.png)
+- [on screen help](doc/images/on-screen-help.png) demonstrates that all on screen help text is readable
+- [run application](doc/images/rofi.png) provides a quick way to start application with `command-shift-Enter` shortcut.
 - [clipboard manager](doc/images/clipboard-manager.png)
-- [active window](doc/images/active-window.png)
+- [active window](doc/images/active-window.png) is at the bottom right corner of the screenshot and it has a lighter blue border around the window than others.
 
 ## Features
+
+Features at a glance copared to default script:
+
+- better launcher
+- blue color scheme
+- active window highlight
+- readable help screen window
+- multiple monitor support
+- keyboard sound controls and keyboard shortcuts
+- laptop keyboard highlight with keyboard shortcuts
+- automatic laptop power indicator visible only when battery is present
+- screenshooter with keyboard shortcuts
+- optional require
+- better support for spawning a process
+- parts of configuration script are overridable without need to commit upstream
+- one large rc script is broken into manageable parts with clear dependencies between scripts (reduced reliance on globals)
 
 ### Blue Color Scheme
 
@@ -80,6 +96,10 @@ Create `overrides/my.lua` file.  Start with template:
 ```sh
 cp overrides/templates/my.lua overrides/my.lua
 ```
+
+### Arrange Multiple Monitors
+
+Included `randr` script from the main website and mapped it to `command-O` to turn on and off multiple monitors.
 
 ## External Dependencies
 

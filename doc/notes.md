@@ -25,3 +25,7 @@ function module.exec(cmd, msg)
         })
     end)
 end```
+
+## References
+
+1. [b/xrandr.lua source](https://awesomewm.org/recipes/xrandr/)

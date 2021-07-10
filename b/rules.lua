@@ -16,7 +16,10 @@ function rules.init(beautiful, key_bindings)
             buttons = key_bindings.clientbuttons,
             screen = awful.screen.preferred,
             placement = awful.placement.no_overlap + awful.placement.no_offscreen
-        }
+        },
+        -- start client windows as slave windows to not impact current window layout
+        -- see: https://awesomewm.org/doc/api/documentation/90-FAQ.md.html
+        callback = awful.client.setslave
     }, {
         rule_any = {
             instance = {"DTA", -- Firefox addon DownThemAll.

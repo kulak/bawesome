@@ -28,7 +28,7 @@ function module.init(my, hotkeys_popup, taskbar, menubar)
                 awful.client.focus.byidx(-1)
             end, {description = "focus previous by index", group = "client"}
         ),
-        awful.key({ modkey,           }, "w", function () taskbar.mymainmenu:show() end, {description = "show main menu", group = "awesome"}),
+        awful.key({ modkey, "Shift"   }, "u", function () taskbar.mymainmenu:show() end, {description = "show main menu", group = "awesome"}),
 
         -- Layout manipulation
         awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end, {description = "swap with next client by index", group = "client"}),
@@ -112,7 +112,7 @@ function module.init(my, hotkeys_popup, taskbar, menubar)
                 c.fullscreen = not c.fullscreen
                 c:raise()
             end, {description = "toggle fullscreen", group = "client"}),
-        awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end, {description = "close", group = "client"}),
+        awful.key({ modkey            }, "w",      function (c) c:kill()                         end, {description = "close", group = "client"}),
         awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     , {description = "toggle floating", group = "client"}),
         awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end, {description = "move to master", group = "client"}),
         awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end, {description = "move to screen", group = "client"}),
